@@ -24,7 +24,7 @@ public class GhostScript : CharacterBase
     void Update()
     {
         speed =5 + Mathf.Sqrt(level);
-        Debug.Log("Ghost Speed = " speed);
+        Debug.Log("Ghost Speed = ", speed);
         if(controlled){
             m_SpriteRenderer.color = Color.blue;
             if(Input.GetKey("w")){

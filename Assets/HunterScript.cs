@@ -27,7 +27,7 @@ public class HunterMovement : CharacterBase
     void Update()
     {
         speed= 5 + Mathf.Sqrt(level);
-        Debug.Log("Hunter Speed = " speed);
+        Debug.Log("Hunter Speed = ", speed);
         m_Rigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
         if(controlled){
             m_SpriteRenderer.color = Color.gray;    
