@@ -26,7 +26,8 @@ public class HunterMovement : CharacterBase
     // Update is called once per frame
     void Update()
     {
-        speed= 5 + level/3;
+        speed= 5 + Mathf.Sqrt(level);
+        Debug.Log("Hunter Speed = " speed);
         m_Rigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
         if(controlled){
             m_SpriteRenderer.color = Color.gray;    
