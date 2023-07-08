@@ -59,7 +59,7 @@ public class HunterMovement : CharacterBase
 
         return raycastHit.collider != null;
     }*/
-    private void OnCollisionEnter2D(Collision2D other) {
+    private void OnCollisionStay2D(Collision2D other) {
         jumps=0;
         Debug.Log("jumps count reset");
     }
