@@ -8,11 +8,17 @@ public class HunterMovement : CharacterBase
     bool wDown = false;
     BoxCollider2D boxCollider2d;
     int jumps = 0;
-    // Start is called before the first frame update
+    int jumpcount = 2; //jumps per ground contact
+    SpriteRenderer m_SpriteRenderer;
+    //The Color to be assigned to the Renderer’s Material
     void Start()
     {
         boxCollider2d = transform.GetComponent<BoxCollider2D>();
         base.Start();
+        //Fetch the SpriteRenderer from the GameObject
+        m_SpriteRenderer = GetComponent<SpriteRenderer>();
+        //Set the GameObject's Color quickly to a set Color (blue)
+        m_SpriteRenderer.color = Color.white;
  
     } 
 
@@ -21,6 +27,7 @@ public class HunterMovement : CharacterBase
     {
 
         if(controlled){
+            m_SpriteRenderer.color = Color.blue;    
             if(Input.GetKey("w") && canJump()){
                 Vector3 velo = GetComponent<Rigidbody2D>().velocity;
                 GetComponent<Rigidbody2D>().velocity = new Vector3(velo.x, 8, 0);
@@ -37,22 +44,28 @@ public class HunterMovement : CharacterBase
                 Vector3 velo = GetComponent<Rigidbody2D>().velocity;
                 GetComponent<Rigidbody2D>().velocity = new Vector3(3, velo.y, 0);
             }
+        } else {
+            m_SpriteRenderer.color = Color.white;
         }
         
 
     }
 
-    private bool IsGrounded(){
+    /*private bool IsGrounded(){
         RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider2d.bounds.center, boxCollider2d.bounds.size, 0f, Vector2.down, .1f, platformLayerMask);
 
         return raycastHit.collider != null;
+    }*/
+    private void OnCollisionEnter2D(Collision2D other) {
+        jumps=0;
+        Debug.Log("jumps count reset");
     }
 
     private bool canJump(){
-        if(IsGrounded()){
+        /*if(IsGrounded()){
             jumps = 0;
-        }
+        }*/
 
-        return jumps < 2 && !wDown;
+        return jumps < jumpcount && !wDown;
     }
 }
