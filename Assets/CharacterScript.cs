@@ -17,7 +17,7 @@ public class CharacterScript : MonoBehaviour
             children[i].controlled = false;
         }
         currentPlayer.controlled = true;
-        
+        currentGhost = currentPlayer;
     }
 
     // Update is called once per frame
