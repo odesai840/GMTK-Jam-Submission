@@ -9,7 +9,7 @@ public class GhostScript : CharacterBase
 {
     SpriteRenderer m_SpriteRenderer;
     //The Color to be assigned to the Renderer’s Material
-    int speed = 5;
+    float speed = 5;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,9 +23,9 @@ public class GhostScript : CharacterBase
     // Update is called once per frame
     void Update()
     {
+        speed =5 +level/4;
         if(controlled){
             m_SpriteRenderer.color = Color.blue;
-
             if(Input.GetKey("w")){
                 Vector3 velo = GetComponent<Rigidbody2D>().velocity;
                 GetComponent<Rigidbody2D>().velocity = new Vector3(velo.x, speed, 0);
