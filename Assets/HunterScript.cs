@@ -11,6 +11,7 @@ public class HunterMovement : CharacterBase
     int jumpcount = 2; //jumps per ground contact
     int speed = 5;
     SpriteRenderer m_SpriteRenderer;    //The Color to be assigned to the Renderer’s Material
+    Rigidbody2D m_Rigidbody;
     void Start()
     {
         boxCollider2d = transform.GetComponent<BoxCollider2D>();
@@ -19,11 +20,13 @@ public class HunterMovement : CharacterBase
         m_SpriteRenderer = GetComponent<SpriteRenderer>();
         //Set the GameObject's Color quickly to a set Color (blue)
         m_SpriteRenderer.color = Color.white; 
+        m_Rigidbody = GetComponent<Rigidbody2D>();
     } 
 
     // Update is called once per frame
     void Update()
     {
+        m_Rigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
         if(controlled){
             m_SpriteRenderer.color = Color.blue;    
             if(Input.GetKey("w") && canJump()){

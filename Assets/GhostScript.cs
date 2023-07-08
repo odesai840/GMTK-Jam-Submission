@@ -40,12 +40,12 @@ public class GhostScript : CharacterBase
             if(Input.GetKey("a")){
                 Vector3 velo = GetComponent<Rigidbody2D>().velocity;
                 GetComponent<Rigidbody2D>().velocity = new Vector3(-speed, velo.y, 0);
-                m_SpriteRenderer.flipX= true;
+                m_SpriteRenderer.flipX= false;
 
             } else if(Input.GetKey("d")){
                 Vector3 velo = GetComponent<Rigidbody2D>().velocity;
                 GetComponent<Rigidbody2D>().velocity = new Vector3(speed, velo.y, 0);
-                m_SpriteRenderer.flipX= false;
+                m_SpriteRenderer.flipX= true;
             } else {
                 Vector3 velo = GetComponent<Rigidbody2D>().velocity;
                 GetComponent<Rigidbody2D>().velocity = new Vector3(0, velo.y, 0);
