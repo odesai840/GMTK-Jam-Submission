@@ -41,5 +41,6 @@ public class GhostScript : CharacterBase
                 GetComponent<Rigidbody2D>().velocity = new Vector3(0, velo.y, 0);
             }
         }
+        base.Update();
     }
 }

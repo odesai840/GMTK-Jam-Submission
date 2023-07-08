@@ -8,6 +8,7 @@ public class CharacterScript : MonoBehaviour
     CharacterBase currentGhost;
     bool currentlyGhost = true;
     bool pDown = false;
+    bool _Down = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -32,14 +33,12 @@ public class CharacterScript : MonoBehaviour
                 for(int i = 0; i < children.Length; i++){
                     if(!children[i].isGhost && children[i].level <= currentPlayer.level){
                         float distance = Vector3.Distance(currentPlayer.transform.position, children[i].transform.position);
-                        Debug.Log(distance);
                         if(distance < closestdist){
                             closest = children[i];
                             closestdist = distance;
                         }
                     }
                 }
-                Debug.Log(closestdist);
                 if(closestdist <= 2){
                     currentlyGhost = false;
                     currentGhost = currentPlayer;
@@ -48,7 +47,6 @@ public class CharacterScript : MonoBehaviour
                     currentGhost.gameObject.SetActive(false);
                 }
             } else {
-                Debug.Log("not ghost");
                 currentGhost.transform.position = currentPlayer.transform.position;
                 currentPlayer.controlled = false;
                 currentPlayer = currentGhost;
@@ -59,5 +57,30 @@ public class CharacterScript : MonoBehaviour
         } 
         pDown = Input.GetKey("p");
 
+        if(Input.GetKey("space") && !_Down){
+            if(!currentPlayer.isGhost){
+                CharacterBase[] children = this.GetComponentsInChildren<CharacterBase>();
+                CharacterBase closest = currentPlayer;
+                float closestdist = 1000000;
+                for(int i = 0; i < children.Length; i++){
+                    if(children[i].isGhost && children[i].level <= currentPlayer.level){
+                        float distance = Vector3.Distance(currentPlayer.transform.position, children[i].transform.position);
+                        if(distance < closestdist){
+                            closest = children[i];
+                            closestdist = distance;
+                        }
+                    }
+                }
+
+                if(closestdist <= 3 && closestdist > 0){
+                    currentGhost.level += closest.level;
+                    closest.gameObject.SetActive(false);
+                }
+
+            }
+        }
+        _Down = Input.GetKey("space");
+
+        currentGhost.transform.position = currentPlayer.transform.position;
     }
 }

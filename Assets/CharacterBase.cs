@@ -19,8 +19,9 @@ public class CharacterBase : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    protected void Update()
     {
-        
+        TextMeshProUGUI a = gameObject.transform.GetChild(0).transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+        a.text = "LVL " + level;
     }
 }
