@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using UnityEngine.UI;
 
 public class CharacterBase : MonoBehaviour
 {
@@ -10,9 +12,10 @@ public class CharacterBase : MonoBehaviour
 
 
     // Start is called before the first frame update
-    void Start()
+    protected void Start()
     {
-        
+        TextMeshProUGUI a = gameObject.transform.GetChild(0).transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+        a.text = "LVL " + level;
     }
 
     // Update is called once per frame

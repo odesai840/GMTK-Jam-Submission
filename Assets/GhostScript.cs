@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using UnityEngine.UI;
+
 
 public class GhostScript : CharacterBase
 {
@@ -8,6 +11,8 @@ public class GhostScript : CharacterBase
     void Start()
     {
         isGhost = true;
+        base.Start();
+
     }
 
     // Update is called once per frame

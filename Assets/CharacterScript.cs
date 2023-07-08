@@ -16,6 +16,7 @@ public class CharacterScript : MonoBehaviour
             children[i].controlled = false;
         }
         currentPlayer.controlled = true;
+        
     }
 
     // Update is called once per frame
@@ -29,8 +30,7 @@ public class CharacterScript : MonoBehaviour
                 CharacterBase closest = currentPlayer;
                 float closestdist = 1000000;
                 for(int i = 0; i < children.Length; i++){
-                     
-                    if(!children[i].isGhost){
+                    if(!children[i].isGhost && children[i].level <= currentPlayer.level){
                         float distance = Vector3.Distance(currentPlayer.transform.position, children[i].transform.position);
                         Debug.Log(distance);
                         if(distance < closestdist){
@@ -58,10 +58,6 @@ public class CharacterScript : MonoBehaviour
             }
         } 
         pDown = Input.GetKey("p");
-
-
-
-
 
     }
 }

@@ -12,6 +12,7 @@ public class HunterMovement : CharacterBase
     void Start()
     {
         boxCollider2d = transform.GetComponent<BoxCollider2D>();
+        base.Start();
  
     } 
 
