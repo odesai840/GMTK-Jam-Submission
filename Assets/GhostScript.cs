@@ -2,10 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GhostScript : MonoBehaviour
+public class GhostScript : CharacterBase
 {
-
-    bool enabled = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,7 +13,7 @@ public class GhostScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(enabled){
+        if(controlled){
             if(Input.GetKey("w")){
                 Vector3 velo = GetComponent<Rigidbody2D>().velocity;
                 GetComponent<Rigidbody2D>().velocity = new Vector3(velo.x, 3, 0);
