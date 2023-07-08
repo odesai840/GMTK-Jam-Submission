@@ -24,9 +24,9 @@ public class GhostScript : CharacterBase
     void Update()
     {
         speed =5 + Mathf.Sqrt(level);
-        //Debug.Log("Ghost Speed = ", speed);
+        //Debug.Log("Ghost Speed = "+ speed.ToString());
         if(controlled){
-            m_SpriteRenderer.color = Color.blue;
+            m_SpriteRenderer.color = Color.white;
             if(Input.GetKey("w")){
                 Vector3 velo = GetComponent<Rigidbody2D>().velocity;
                 GetComponent<Rigidbody2D>().velocity = new Vector3(velo.x, speed, 0);
@@ -51,11 +51,16 @@ public class GhostScript : CharacterBase
                 Vector3 velo = GetComponent<Rigidbody2D>().velocity;
                 GetComponent<Rigidbody2D>().velocity = new Vector3(0, velo.y, 0);
             }
-        }
-        else{
-                m_SpriteRenderer.color = Color.white;
-            }
+        } else if (level<=10){
+            m_SpriteRenderer.color = Color.yellow;
+        } else if (level>10 && level<=20){
+            m_SpriteRenderer.color = Color.blue;
+        } else if (level>20 && level<=30){
+            m_SpriteRenderer.color = Color.black;
+        } else{
+            m_SpriteRenderer.color = Color.white;
+        }            
          base.Update();
-
+        
     }
 }

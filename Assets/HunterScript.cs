@@ -27,10 +27,10 @@ public class HunterMovement : CharacterBase
     void Update()
     {
         speed= 5 + Mathf.Sqrt(level);
-        //Debug.Log("Hunter Speed = ", speed);
+        //Debug.Log("Hunter Speed = "+ speed.ToString());
         m_Rigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
         if(controlled){
-            m_SpriteRenderer.color = Color.gray;    
+            m_SpriteRenderer.color = Color.white;    
             if(Input.GetKey("w") && canJump()){
                 Vector3 velo = GetComponent<Rigidbody2D>().velocity;
                 GetComponent<Rigidbody2D>().velocity = new Vector3(velo.x, 8, 0);
@@ -50,7 +50,7 @@ public class HunterMovement : CharacterBase
                 m_SpriteRenderer.flipX= false;
             }
         } else {
-            m_SpriteRenderer.color = Color.white;
+            m_SpriteRenderer.color = Color.grey;
         }
         
 
