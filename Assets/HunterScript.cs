@@ -9,8 +9,8 @@ public class HunterMovement : CharacterBase
     BoxCollider2D boxCollider2d;
     int jumps = 0;
     int jumpcount = 2; //jumps per ground contact
-    SpriteRenderer m_SpriteRenderer;
-    //The Color to be assigned to the Renderer’s Material
+    int speed = 5;
+    SpriteRenderer m_SpriteRenderer;    //The Color to be assigned to the Renderer’s Material
     void Start()
     {
         boxCollider2d = transform.GetComponent<BoxCollider2D>();
@@ -18,14 +18,12 @@ public class HunterMovement : CharacterBase
         //Fetch the SpriteRenderer from the GameObject
         m_SpriteRenderer = GetComponent<SpriteRenderer>();
         //Set the GameObject's Color quickly to a set Color (blue)
-        m_SpriteRenderer.color = Color.white;
- 
+        m_SpriteRenderer.color = Color.white; 
     } 
 
     // Update is called once per frame
     void Update()
     {
-
         if(controlled){
             m_SpriteRenderer.color = Color.blue;    
             if(Input.GetKey("w") && canJump()){
@@ -37,12 +35,14 @@ public class HunterMovement : CharacterBase
 
             if(Input.GetKey("a")){
                 Vector3 velo = GetComponent<Rigidbody2D>().velocity;
-                GetComponent<Rigidbody2D>().velocity = new Vector3(-3, velo.y, 0);
+                GetComponent<Rigidbody2D>().velocity = new Vector3(-speed, velo.y, 0);
+                m_SpriteRenderer.flipX= true;
             } 
 
             if(Input.GetKey("d")){
                 Vector3 velo = GetComponent<Rigidbody2D>().velocity;
-                GetComponent<Rigidbody2D>().velocity = new Vector3(3, velo.y, 0);
+                GetComponent<Rigidbody2D>().velocity = new Vector3(speed, velo.y, 0);
+                m_SpriteRenderer.flipX= false;
             }
         } else {
             m_SpriteRenderer.color = Color.white;
