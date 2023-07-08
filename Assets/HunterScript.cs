@@ -4,20 +4,26 @@ using UnityEngine;
 
 public class HunterMovement : CharacterBase
 {
+    public LayerMask platformLayerMask;
     bool wDown = false;
+    BoxCollider2D boxCollider2d;
+    int jumps = 0;
     // Start is called before the first frame update
     void Start()
     {
-        
+        boxCollider2d = transform.GetComponent<BoxCollider2D>();
+ 
     } 
 
     // Update is called once per frame
     void Update()
     {
+
         if(controlled){
-            if(Input.GetKey("w") && !wDown){
+            if(Input.GetKey("w") && canJump()){
                 Vector3 velo = GetComponent<Rigidbody2D>().velocity;
-                GetComponent<Rigidbody2D>().velocity = new Vector3(velo.x, 5, 0);
+                GetComponent<Rigidbody2D>().velocity = new Vector3(velo.x, 8, 0);
+                jumps += 1;
             }
             wDown = Input.GetKey("w");
 
@@ -33,5 +39,19 @@ public class HunterMovement : CharacterBase
         }
         
 
+    }
+
+    private bool IsGrounded(){
+        RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider2d.bounds.center, boxCollider2d.bounds.size, 0f, Vector2.down, .1f, platformLayerMask);
+
+        return raycastHit.collider != null;
+    }
+
+    private bool canJump(){
+        if(IsGrounded()){
+            jumps = 0;
+        }
+
+        return jumps < 2 && !wDown;
     }
 }

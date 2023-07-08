@@ -24,19 +24,13 @@ public class CharacterScript : MonoBehaviour
         
 
         if(Input.GetKey("p") && !pDown){
-            Debug.Log("P pressed");
             if(currentlyGhost){
-                Debug.Log("Currently Ghost");
                 CharacterBase[] children = this.GetComponentsInChildren<CharacterBase>();
                 CharacterBase closest = currentPlayer;
                 float closestdist = 1000000;
-                Debug.Log(children.Length);
                 for(int i = 0; i < children.Length; i++){
-                    Debug.Log(i);
-                    Debug.Log(children[i]);
-                    Debug.Log(currentPlayer);
-                    if(!GameObject.ReferenceEquals(children[i], currentPlayer)){
-                        Debug.Log("Not the current");
+                     
+                    if(!children[i].isGhost){
                         float distance = Vector3.Distance(currentPlayer.transform.position, children[i].transform.position);
                         Debug.Log(distance);
                         if(distance < closestdist){
@@ -47,7 +41,6 @@ public class CharacterScript : MonoBehaviour
                 }
                 Debug.Log(closestdist);
                 if(closestdist <= 2){
-                    Debug.Log("within range");
                     currentlyGhost = false;
                     currentGhost = currentPlayer;
                     currentPlayer = closest;
