@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using UnityEngine.UI;
 
 public class CharacterScript : MonoBehaviour
 {
@@ -23,10 +25,14 @@ public class CharacterScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        Slider slider = GameObject.Find("Main Camera").transform.GetChild(0).transform.GetChild(0).GetComponent<Slider>();
+        slider.value = currentGhost.level;
+        TextMeshProUGUI textbox = GameObject.Find("Main Camera").transform.GetChild(0).transform.GetChild(1).GetComponent<TextMeshProUGUI>();
+        textbox.text = currentGhost.level.ToString() + "/200";
+
 
         if(Input.GetKey("p") && !pDown){
-            if(currentlyGhost){
+            if(currentlyGhost){  
                 CharacterBase[] children = this.GetComponentsInChildren<CharacterBase>();
                 CharacterBase closest = currentPlayer;
                 float closestdist = 1000000;
