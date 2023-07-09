@@ -38,7 +38,7 @@ public class HunterMovement : CharacterBase
                 Vector3 velo = GetComponent<Rigidbody2D>().velocity;
                 GetComponent<Rigidbody2D>().velocity = new Vector3(velo.x, 8, 0);
                 jumps += 1;
-                Debug.Log("Jumped");
+                //Debug.Log("Jumped");
             }
             wDown = Input.GetKey("w");
 

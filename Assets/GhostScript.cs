@@ -25,7 +25,7 @@ public class GhostScript : CharacterBase
     // Update is called once per frame
     void Update()
     {
-        animator.SetFloat("isLevel", level);    
+        //animator.SetFloat("isLevel", level);    
         speed = 5 + Mathf.Sqrt(level);
         //Debug.Log("Ghost Speed = ", speed);
         if(controlled){
@@ -60,7 +60,7 @@ public class GhostScript : CharacterBase
             } else if (level>10 && level<=20){
                 m_SpriteRenderer.color = Color.blue;
             } else if (level>20 && level<=30){
-                m_SpriteRenderer.color = Color.grey;
+                m_SpriteRenderer.color = Color.red;
             } else{
                 m_SpriteRenderer.color = Color.white;
             }
