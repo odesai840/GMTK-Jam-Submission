@@ -72,12 +72,34 @@ public class GhostScript : CharacterBase
     void FixedUpdate(){
 
         if(!controlled){
+
+            CharacterScript player = GameObject.Find("Characters").GetComponent<CharacterScript>();
             if(frameCount <= 0){
-                GetComponent<Rigidbody2D>().velocity = new Vector3(Random.Range(-.75f, .75f)*speed, Random.Range(-.75f, .75f)*speed, 0);
-                frameCount = 50;
+                if(Random.Range(0, 10) >= 5 - Mathf.Sqrt(level)){
+                    transform.position = Vector2.MoveTowards(transform.position, player.currentPlayer.transform.position, speed*Time.deltaTime);
+                } else {
+                    GetComponent<Rigidbody2D>().velocity = new Vector3(Random.Range(-.75f, .75f)*speed, Random.Range(-.75f, .75f)*speed, 0);
+                }
+                
+                frameCount = 25;
             }
 
             frameCount--;
+        //-114, -5
+        //93, 30
+            if(transform.position.x <= -114){
+                transform.position = new Vector3(-114, transform.position.y, 0);
+            } else if(transform.position.x >= 94){
+                transform.position = new Vector3(94, transform.position.y, 0);
+            }
+
+            if(transform.position.y <= -5){
+                transform.position = new Vector3(transform.position.x, -5, 0);
+            } else if(transform.position.y >= 30){
+                transform.position = new Vector3(transform.position.x, 30, 0);
+            }
+
+            
         }
         
     }

@@ -81,6 +81,7 @@ public class CharacterScript : MonoBehaviour
         }
         _Down = Input.GetKey("space");
 
+
         currentGhost.transform.position = currentPlayer.transform.position;
     }
 }
