@@ -314,6 +314,8 @@ MonoBehaviour:
   enemyPrefabs:
   - {fileID: 1433660451775118048, guid: 629cdeb55de864fe5a0a4ae4ad2bcb25, type: 3}
   - {fileID: 7594632959525920944, guid: 60ff4097c4acc43e4b8b4a6063eca35d, type: 3}
+  character: {fileID: 1387636137}
+  GhostScript: {fileID: 7337213367124582902, guid: afec614fed815a745800b8471a805273, type: 3}
 --- !u!4 &69204521
 Transform:
   m_ObjectHideFlags: 0
@@ -10748,6 +10750,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentPlayer: {fileID: 1260689878}
+  currentGhost: {fileID: 0}
 --- !u!4 &1387636138
 Transform:
   m_ObjectHideFlags: 0
