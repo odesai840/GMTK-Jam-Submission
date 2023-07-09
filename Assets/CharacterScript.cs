@@ -81,6 +81,19 @@ public class CharacterScript : MonoBehaviour
         }
         _Down = Input.GetKey("space");
 
+        CharacterBase[] childrenToCheck = this.GetComponentsInChildren<CharacterBase>();
+        
+        for(int i = 0; i < childrenToCheck.Length; i++){
+            float distance = Vector3.Distance(currentPlayer.transform.position, childrenToCheck[i].transform.position);
+            if(childrenToCheck[i].isGhost && !currentPlayer.isGhost && distance <= 2 && childrenToCheck[i].level > currentGhost.level){
+                currentPlayer.controlled = false;
+                currentPlayer = currentGhost;
+                currentGhost.gameObject.SetActive(true);
+                currentPlayer.controlled = true;
+                currentPlayer.transform.position = childrenToCheck[i].transform.position;
+            }
+        }
+
 
         currentGhost.transform.position = currentPlayer.transform.position;
     }
