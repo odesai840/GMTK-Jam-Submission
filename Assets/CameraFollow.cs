@@ -7,12 +7,13 @@ public class CameraFollow : MonoBehaviour
 
     public Transform followTransform;
     // Start is called before the first frame update
-    private float ylowerlimit =  6.2f;
-    private float yupperlimit =  70.7f;
-    private float xlowerlimit =  -62.6f;
-    private float xupperlimit =  41.62f;
-    private float x = 0;
-    private float y = 0;
+    public float ylowerlimit =  6.2f;
+    public float yupperlimit =  70.7f;
+    public float xlowerlimit =  -62.6f;
+    public float xupperlimit =  41.62f;
+    public float x = 0;
+    public float y = 0;
+    
     void Start()
     {
         

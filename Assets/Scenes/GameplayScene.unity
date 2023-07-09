@@ -306,6 +306,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnParent: {fileID: 1387636138}
   spawnCooldown: 2
+  CameraFollow: {fileID: 519420033}
   spawnPoints:
   - {fileID: 2126058901}
   - {fileID: 2058086949}
@@ -9879,6 +9880,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   followTransform: {fileID: 1260689877}
+  ylowerlimit: 6.2
+  yupperlimit: 70.7
+  xlowerlimit: -62.6
+  xupperlimit: 41.62
+  x: 0
+  y: 0
 --- !u!1001 &542175794
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11608,6 +11615,14 @@ PrefabInstance:
     - target: {fileID: 5412537314414721371, guid: 60ff4097c4acc43e4b8b4a6063eca35d, type: 3}
       propertyPath: m_Layer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6834264955530250091, guid: 60ff4097c4acc43e4b8b4a6063eca35d, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.89
+      objectReference: {fileID: 0}
+    - target: {fileID: 6834264955530250091, guid: 60ff4097c4acc43e4b8b4a6063eca35d, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 5.66
       objectReference: {fileID: 0}
     - target: {fileID: 7594632959525920944, guid: 60ff4097c4acc43e4b8b4a6063eca35d, type: 3}
       propertyPath: m_Name

@@ -5,8 +5,8 @@ using UnityEngine;
 public class SpawnRandom : MonoBehaviour
 {
     [SerializeField] private Transform spawnParent;
-    [SerializeField] private float spawnCooldown = 2f;
-    
+    [SerializeField] private float spawnCooldown = 4f;
+    public CameraFollow CameraFollow;
     public Transform[] spawnPoints;
     public GameObject[] enemyPrefabs;
 
@@ -16,6 +16,7 @@ public class SpawnRandom : MonoBehaviour
         if(!isSpawning){
             isSpawning = true;
             StartCoroutine(SpawnRoutine());
+            GetComponent<Transform>().position = new Vector3(Random.Range(CameraFollow.xlowerlimit, CameraFollow.xupperlimit), Random.Range(CameraFollow.ylowerlimit, CameraFollow.yupperlimit), 0);
         }
     }
 

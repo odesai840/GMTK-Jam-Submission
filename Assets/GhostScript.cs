@@ -89,16 +89,16 @@ public class GhostScript : CharacterBase
             frameCount--;
         //-114, -5
         //93, 30
-            if(transform.position.x <= -114){
-                transform.position = new Vector3(-114, transform.position.y, 0);
-            } else if(transform.position.x >= 94){
-                transform.position = new Vector3(94, transform.position.y, 0);
+            if(transform.position.x <= -63){
+                transform.position = new Vector3(-63, transform.position.y, 0);
+            } else if(transform.position.x >= 42){
+                transform.position = new Vector3(42, transform.position.y, 0);
             }
 
-            if(transform.position.y <= -5){
-                transform.position = new Vector3(transform.position.x, -5, 0);
-            } else if(transform.position.y >= 30){
-                transform.position = new Vector3(transform.position.x, 30, 0);
+            if(transform.position.y <= 6){
+                transform.position = new Vector3(transform.position.x, 6, 0);
+            } else if(transform.position.y >= 71){
+                transform.position = new Vector3(transform.position.x, 71, 0);
             }
 
             
