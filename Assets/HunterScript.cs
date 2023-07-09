@@ -57,6 +57,7 @@ public class HunterMovement : CharacterBase
             }
         } else {
             m_SpriteRenderer.color = Color.grey;
+            animator.SetFloat("Speed",0);
         }
         
 
@@ -68,7 +69,9 @@ public class HunterMovement : CharacterBase
         return raycastHit.collider != null;
     }*/
     private void OnCollisionStay2D(Collision2D other) {
-        jumps=0;
+        jumps = 0;
+        animator.SetBool("IsJumping",false);
+        //Debug.Log("jumps count reset");
     }
 
     private bool canJump(){

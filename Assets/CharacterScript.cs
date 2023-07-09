@@ -9,7 +9,7 @@ public class CharacterScript : MonoBehaviour
     bool currentlyGhost = true;
     bool pDown = false;
     bool _Down = false;
-    public Animator animator;
+    //public Animator animator;
     // Start is called before the first frame update
     void Start()
     {
@@ -56,7 +56,7 @@ public class CharacterScript : MonoBehaviour
         } 
         pDown = Input.GetKey("p");
 
-            animator.SetBool("Attack1", true);
+            //animator.SetBool("Attack1", true);
         if(Input.GetKey("space") && !_Down){
             if(!currentPlayer.isGhost){
                 CharacterBase[] children = GetComponentsInChildren<CharacterBase>();
@@ -68,7 +68,7 @@ public class CharacterScript : MonoBehaviour
                         if(distance < closestdist){
                             closest = children[i];
                             closestdist = distance;
-                            animator.SetBool("Attack2", true);
+                            //animator.SetBool("Attack2", true);
                             //Debug.Log("Attack 2");
                         }
                     }
@@ -81,11 +81,12 @@ public class CharacterScript : MonoBehaviour
 
             }
         } else if(Input.GetKey("space")) {
-            animator.SetBool("Attack1", true);
+            //animator.SetBool("Attack1", true);
             //Debug.Log("Attack 1");
         } 
-        animator.SetBool("Attack1", false);
+        /*animator.SetBool("Attack1", false);
         animator.SetBool("Attack2", false);
+        */
         _Down = Input.GetKey("space");
 
         CharacterBase[] childrenToCheck = GetComponentsInChildren<CharacterBase>();

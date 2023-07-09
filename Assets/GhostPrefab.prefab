@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 9053516772241988345}
   - component: {fileID: 6645493857970857781}
   - component: {fileID: 69138757281866272}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -114,7 +114,7 @@ GameObject:
   - component: {fileID: 1904628882898687727}
   - component: {fileID: 1769825094029142624}
   - component: {fileID: 2513795413317723713}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -251,7 +251,7 @@ GameObject:
   - component: {fileID: 2660737160220569328}
   - component: {fileID: 7463143541570559904}
   - component: {fileID: 4218253521169531167}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ghost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -319,7 +319,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: -154530116, guid: 7d5d49ce616b33841acf54f0df4bf68d, type: 3}
   m_Color: {r: 0.6392157, g: 0.8431373, b: 0.9058824, a: 1}
   m_FlipX: 0
@@ -404,7 +404,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8097731365959388332}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: GhostPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
