@@ -36,7 +36,7 @@ public class HunterMovement : CharacterBase
             if(Input.GetKey("w") && canJump()){
                 animator.SetBool("IsJumping",true);
                 Vector3 velo = GetComponent<Rigidbody2D>().velocity;
-                GetComponent<Rigidbody2D>().velocity = new Vector3(velo.x, 8, 0);
+                GetComponent<Rigidbody2D>().velocity = new Vector3(velo.x, speed+3, 0);
                 jumps += 1;
                 //Debug.Log("Jumped");
             }

@@ -9,11 +9,11 @@ public class CameraFollow : MonoBehaviour
     // Start is called before the first frame update
     public float ylowerlimit =  6.2f;
     public float yupperlimit =  70.7f;
-    public float xlowerlimit =  -62.6f;
-    public float xupperlimit =  41.62f;
+    public float xlowerlimit =  -65.35f;
+    public float xupperlimit =  44.5f;
     public float x = 0;
     public float y = 0;
-    
+
     void Start()
     {
         

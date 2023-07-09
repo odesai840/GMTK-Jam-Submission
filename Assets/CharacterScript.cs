@@ -5,7 +5,7 @@ using UnityEngine;
 public class CharacterScript : MonoBehaviour
 {
     public CharacterBase currentPlayer;
-    CharacterBase currentGhost;
+    public CharacterBase currentGhost;
     bool currentlyGhost = true;
     bool pDown = false;
     bool _Down = false;

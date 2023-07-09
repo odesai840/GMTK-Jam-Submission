@@ -5,10 +5,12 @@ using UnityEngine;
 public class SpawnRandom : MonoBehaviour
 {
     [SerializeField] private Transform spawnParent;
-    [SerializeField] private float spawnCooldown = 4f;
+    [SerializeField] private float spawnCooldown = 2f;
     public CameraFollow CameraFollow;
     public Transform[] spawnPoints;
     public GameObject[] enemyPrefabs;
+    public CharacterScript character;
+    public GhostScript GhostScript;
 
     private bool isSpawning = false;
 
@@ -29,7 +31,11 @@ public class SpawnRandom : MonoBehaviour
     private void Spawn(){
         int randEnemy = Random.Range(0, enemyPrefabs.Length);
         int randSpawn = Random.Range(0, spawnPoints.Length);
-        
+        //Debug.Log("spawning");
+        int randlevel = Random.Range(6, 100);
+
+        GhostScript.GetComponent<GhostScript>().level = randlevel;
         Instantiate(enemyPrefabs[randEnemy], spawnPoints[randSpawn].position, transform.rotation, spawnParent);
+        
     }
 }
