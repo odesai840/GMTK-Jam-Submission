@@ -13,7 +13,7 @@ public class CharacterScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        CharacterBase[] children = this.GetComponentsInChildren<CharacterBase>();
+        CharacterBase[] children = GetComponentsInChildren<CharacterBase>();
         for(int i = 0; i < children.Length; i++){
             children[i].controlled = false;
         }
@@ -26,7 +26,7 @@ public class CharacterScript : MonoBehaviour
     {
         if(Input.GetKey("p") && !pDown){
             if(currentlyGhost){
-                CharacterBase[] children = this.GetComponentsInChildren<CharacterBase>();
+                CharacterBase[] children = GetComponentsInChildren<CharacterBase>();
                 CharacterBase closest = currentPlayer;
                 float closestdist = 1000000;
                 for(int i = 0; i < children.Length; i++){
@@ -59,7 +59,7 @@ public class CharacterScript : MonoBehaviour
             animator.SetBool("Attack1", true);
         if(Input.GetKey("space") && !_Down){
             if(!currentPlayer.isGhost){
-                CharacterBase[] children = this.GetComponentsInChildren<CharacterBase>();
+                CharacterBase[] children = GetComponentsInChildren<CharacterBase>();
                 CharacterBase closest = currentPlayer;
                 float closestdist = 1000000;
                 for(int i = 0; i < children.Length; i++){
@@ -87,6 +87,20 @@ public class CharacterScript : MonoBehaviour
         animator.SetBool("Attack1", false);
         animator.SetBool("Attack2", false);
         _Down = Input.GetKey("space");
+
+        CharacterBase[] childrenToCheck = GetComponentsInChildren<CharacterBase>();
+        
+        for(int i = 0; i < childrenToCheck.Length; i++){
+            float distance = Vector3.Distance(currentPlayer.transform.position, childrenToCheck[i].transform.position);
+            if(childrenToCheck[i].isGhost && !currentPlayer.isGhost && distance <= 2 && childrenToCheck[i].level > currentGhost.level){
+                currentPlayer.controlled = false;
+                currentPlayer = currentGhost;
+                currentGhost.gameObject.SetActive(true);
+                currentPlayer.controlled = true;
+                currentPlayer.transform.position = childrenToCheck[i].transform.position;
+            }
+        }
+
 
         currentGhost.transform.position = currentPlayer.transform.position;
     }
