@@ -102,6 +102,10 @@ public class CharacterScript : MonoBehaviour
             }
         }
 
+        if(Input.GetKey("q")){
+            print(currentPlayer.transform.position);
+        }
+
 
         currentGhost.transform.position = currentPlayer.transform.position;
     }
