@@ -11,6 +11,7 @@ public class GhostScript : CharacterBase
     //The Color to be assigned to the Renderer’s Material
     float speed = 5;
     int frameCount = 5;
+    public Animator animator;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +25,7 @@ public class GhostScript : CharacterBase
     // Update is called once per frame
     void Update()
     {
+        animator.SetFloat("isLevel", level);    
         speed = 5 + Mathf.Sqrt(level);
         //Debug.Log("Ghost Speed = ", speed);
         if(controlled){
@@ -58,7 +60,7 @@ public class GhostScript : CharacterBase
             } else if (level>10 && level<=20){
                 m_SpriteRenderer.color = Color.blue;
             } else if (level>20 && level<=30){
-                m_SpriteRenderer.color = Color.black;
+                m_SpriteRenderer.color = Color.grey;
             } else{
                 m_SpriteRenderer.color = Color.white;
             }

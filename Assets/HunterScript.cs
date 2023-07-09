@@ -12,6 +12,7 @@ public class HunterMovement : CharacterBase
     float speed = 5;
     SpriteRenderer m_SpriteRenderer;    //The Color to be assigned to the Renderer’s Material
     Rigidbody2D m_Rigidbody;
+    public Animator animator;
     void Start()
     {
         boxCollider2d = transform.GetComponent<BoxCollider2D>();
@@ -30,11 +31,14 @@ public class HunterMovement : CharacterBase
         //Debug.Log("Hunter Speed = "+ speed.ToString());
         m_Rigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
         if(controlled){
-            m_SpriteRenderer.color = Color.white;    
+            m_SpriteRenderer.color = Color.white;
+            animator.SetFloat("Speed", 0);    
             if(Input.GetKey("w") && canJump()){
+                animator.SetBool("IsJumping",true);
                 Vector3 velo = GetComponent<Rigidbody2D>().velocity;
                 GetComponent<Rigidbody2D>().velocity = new Vector3(velo.x, 8, 0);
                 jumps += 1;
+                Debug.Log("Jumped");
             }
             wDown = Input.GetKey("w");
 
@@ -42,12 +46,14 @@ public class HunterMovement : CharacterBase
                 Vector3 velo = GetComponent<Rigidbody2D>().velocity;
                 GetComponent<Rigidbody2D>().velocity = new Vector3(-speed, velo.y, 0);
                 m_SpriteRenderer.flipX= true;
+                animator.SetFloat("Speed",Mathf.Abs(speed));
             } 
 
             if(Input.GetKey("d")){
                 Vector3 velo = GetComponent<Rigidbody2D>().velocity;
                 GetComponent<Rigidbody2D>().velocity = new Vector3(speed, velo.y, 0);
                 m_SpriteRenderer.flipX= false;
+                animator.SetFloat("Speed",Mathf.Abs(speed));
             }
         } else {
             m_SpriteRenderer.color = Color.grey;
@@ -62,8 +68,9 @@ public class HunterMovement : CharacterBase
         return raycastHit.collider != null;
     }*/
     private void OnCollisionStay2D(Collision2D other) {
-        jumps=0;
-        Debug.Log("jumps count reset");
+        jumps = 0;
+        animator.SetBool("IsJumping",false);
+        //Debug.Log("jumps count reset");
     }
 
     private bool canJump(){
