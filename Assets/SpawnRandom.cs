@@ -5,18 +5,30 @@ using UnityEngine;
 public class SpawnRandom : MonoBehaviour
 {
     [SerializeField] private Transform spawnParent;
+    [SerializeField] private float spawnCooldown = 2f;
     
     public Transform[] spawnPoints;
     public GameObject[] enemyPrefabs;
 
-    private void Update(){
-        if(Input.GetMouseButtonDown(0)){
-            int randEnemy = Random.Range(0, enemyPrefabs.Length);
-            int randSpawn = Random.Range(0, spawnPoints.Length);
+    private bool isSpawning = false;
 
-            Instantiate(enemyPrefabs[randEnemy], spawnPoints[randSpawn].position, transform.rotation, spawnParent);
+    private void Update(){
+        if(!isSpawning){
+            isSpawning = true;
+            StartCoroutine(SpawnRoutine());
         }
     }
 
-    // private IEnumerator SpawnRoutine()
+    private IEnumerator SpawnRoutine(){
+        Spawn();
+        yield return new WaitForSeconds(spawnCooldown);
+        isSpawning = false;
+    }
+
+    private void Spawn(){
+        int randEnemy = Random.Range(0, enemyPrefabs.Length);
+        int randSpawn = Random.Range(0, spawnPoints.Length);
+        
+        Instantiate(enemyPrefabs[randEnemy], spawnPoints[randSpawn].position, transform.rotation, spawnParent);
+    }
 }

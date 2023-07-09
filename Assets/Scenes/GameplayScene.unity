@@ -289,6 +289,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnParent: {fileID: 1387636138}
+  spawnCooldown: 2
   spawnPoints:
   - {fileID: 2126058901}
   - {fileID: 2058086949}
@@ -11978,37 +11979,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8097731365959388332, guid: 60ff4097c4acc43e4b8b4a6063eca35d, type: 3}
   m_PrefabInstance: {fileID: 290394157}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &412437767
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 412437768}
-  m_Layer: 0
-  m_Name: Ghost Spawner
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &412437768
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 412437767}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1387636138}
-  m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &465068175
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13101,7 +13071,6 @@ Transform:
   - {fileID: 1958389986}
   - {fileID: 279595713}
   - {fileID: 1496847789}
-  - {fileID: 412437768}
   - {fileID: 1532739339}
   - {fileID: 1528200255}
   - {fileID: 911491933}
