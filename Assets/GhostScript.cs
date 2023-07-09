@@ -23,8 +23,8 @@ public class GhostScript : CharacterBase
     // Update is called once per frame
     void Update()
     {
-        speed =5 + Mathf.Sqrt(level);
-        //Debug.Log("Ghost Speed = "+ speed.ToString());
+        speed = 5 + Mathf.Sqrt(level);
+        //Debug.Log("Ghost Speed = ", speed);
         if(controlled){
             m_SpriteRenderer.color = Color.white;
             if(Input.GetKey("w")){
